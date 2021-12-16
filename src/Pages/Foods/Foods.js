@@ -2,6 +2,7 @@ import { Container, Grid, Typography } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React, { useEffect, useState } from "react";
 import Food from "../../Shared/Food";
+import Header from "../../Shared/Header";
 
 export default function Foods() {
   const [foods, setFoods] = useState([]);
@@ -27,15 +28,16 @@ export default function Foods() {
   useEffect(() => {
     fetch('http://localhost:5000/foods')
     .then(res => res.json())
-    .then(data => setFoods(data.filter(food => food.category === "top")))
+    .then(data => setFoods(data))
     .catch(err => console.log(err));
   }, []);
    console.log(foods);
   return (
     <>
+    <Header/>
       <Container sx={{ py: "30px" }}>
         <Typography className={sectionTitle} variant="h3">
-          Top Foods
+          All Foods
         </Typography>
       </Container>
       <Container sx={{pb:'50px'}}>

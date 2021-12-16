@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Register() {
+export default function UsersAdmin() {
   return (
     <div>
-      Register
+      Users Admin
     </div>
   )
 }

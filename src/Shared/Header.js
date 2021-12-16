@@ -11,8 +11,9 @@ import Typography from "@mui/material/Typography";
 import { makeStyles } from "@mui/styles";
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-
+import useAuth from "../hooks/useAuth";
 export default function Header() {
+  const { user, logOutUser } = useAuth();
   const theme = useTheme();
   const useStyles = makeStyles({
     sidebarItem: {
@@ -42,15 +43,21 @@ export default function Header() {
       },
     },
     navLogo: {
-      color: '#fff !important',
+      color: "#fff !important",
       [theme.breakpoints.down("md")]: {
         textAlign: "right",
       },
     },
     navLogoText: {
-      color: '#FFF !important',
+      color: "#FFF !important",
       fontWeight: "bold",
-    }
+    },
+    logoutButtons: {
+      background: "#FE6B8B !important",
+      "&:hover": {
+        background: "#561c22 !important",
+      },
+    },
   });
   const classes = useStyles();
   const [state, setState] = React.useState(false);
@@ -108,15 +115,25 @@ export default function Header() {
             Foods
           </ListItem>
         </NavLink>
-        <NavLink className={classes.sidebarItem} to="/login">
-          <ListItem
-            onClick={() => setState(false)}
-            className={classes.sidebarMenus}
-            button
+        {user?.email ? (
+          <Button
+            variant="contained"
+            className={classes.logoutButtons}
+            onClick={logOutUser}
           >
-            Login
-          </ListItem>
-        </NavLink>
+            Logout
+          </Button>
+        ) : (
+          <NavLink className={classes.sidebarItem} to="/login">
+            <ListItem
+              onClick={() => setState(false)}
+              className={classes.sidebarMenus}
+              button
+            >
+              Login
+            </ListItem>
+          </NavLink>
+        )}
       </List>
     </Box>
   );
@@ -144,7 +161,9 @@ export default function Header() {
                 component="div"
                 sx={{ flexGrow: 1 }}
               >
-                <Link className={classes.navLogoText} to="/">RAW FOODS</Link>
+                <Link className={classes.navLogoText} to="/">
+                  RAW FOODS
+                </Link>
               </Typography>
 
               <Box className={classes.navItems}>
@@ -157,9 +176,25 @@ export default function Header() {
                 <NavLink className={classes.navItem} to="/foods">
                   <Button sx={{ color: "white" }}>Foods</Button>
                 </NavLink>
-                <NavLink className={classes.navItem} to="/login">
-                  <Button sx={{ color: "white" }}>Login</Button>
-                </NavLink>
+                {user.email && (
+                  <NavLink className={classes.navItem} to="/dashboard">
+                    <Button sx={{ color: "white" }}>Dashboard</Button>
+                  </NavLink>
+                )}
+                {user?.email ? (
+                  <Button
+                    variant="contained"
+                    className={classes.logoutButtons}
+                    onClick={logOutUser}
+                    sx={{ marginLeft: "8px" }}
+                  >
+                    Logout
+                  </Button>
+                ) : (
+                  <NavLink className={classes.navItem} to="/login">
+                    <Button sx={{ color: "white" }}>Login</Button>
+                  </NavLink>
+                )}
               </Box>
             </Toolbar>
           </Container>

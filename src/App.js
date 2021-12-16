@@ -1,25 +1,33 @@
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
+import AuthProvider from "./context/AuthProvider";
 import About from "./Pages/About/About";
+import ResponsiveDrawer from "./Pages/Dashboard/ResponsiveDrawer";
+import Foods from "./Pages/Foods/Foods";
 import Home from "./Pages/Home/Home";
-import Login from "./Pages/Login/Login";
-import Register from "./Pages/Login/Register";
-import Foods from "./Shared/Foods";
-import Header from "./Shared/Header";
+import LoginPage from "./Pages/Login/LoginPage";
+import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
+import OrderHere from "./Shared/OrderHere";
 
 function App() {
   return (
-    <Router>
-      <Header />
-      <Switch>
-        <Route exact path="/" component={Home} />
-        <Route path="/home" component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/foods" component={Foods} />
-        <Route path="/login" component={Login} />
-        <Route path="/register" component={Register} />
-      </Switch>
-    </Router>
+    <AuthProvider>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/home" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/foods" component={Foods} />
+          <Route path="/login" component={LoginPage} />
+          <PrivateRoute path="/food/:id">
+            <OrderHere />
+          </PrivateRoute>
+          <PrivateRoute path="/dashboard">
+            <ResponsiveDrawer />
+          </PrivateRoute>
+        </Switch>
+      </Router>
+    </AuthProvider>
   );
 }
 

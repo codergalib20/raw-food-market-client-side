@@ -1,0 +1,57 @@
+.animationPageOpen {
+  -webkit-animation: animationPageOpenSlowly 1s ease-in-out;
+  -moz-animation: animationPageOpenSlowly 1s ease-in-out;
+  -o-animation: animationPageOpenSlowly 1s ease-in-out;
+  -ms-transition: animationPageOpenSlowly 1s ease-in-out;
+  animation: animationPageOpenSlowly 1s ease-in-out;
+}
+@keyframes animationPageOpenSlowly {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes animationPageOpenSlowly {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-ms-keyframes animationPageOpenSlowly {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-o-keyframes animationPageOpenSlowly {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@-moz-keyframes animationPageOpenSlowly {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
