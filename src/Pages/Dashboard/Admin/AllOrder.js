@@ -9,7 +9,7 @@ import { Box } from "@mui/system";
 import React from "react";
 import swal from "sweetalert";
 
-export default function CartItem({ item, filterEmail, setFilterEmail }) {
+export default function AllOrder({ item, filterEmail, setFilterEmail }) {
   const useStyle = makeStyles({
     itemsArea: {
       display: "flex !important",

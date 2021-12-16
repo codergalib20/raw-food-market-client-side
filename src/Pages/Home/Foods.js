@@ -5,7 +5,7 @@ import Food from "../../Shared/Food";
 
 export default function Foods() {
   const [foods, setFoods] = useState([]);
-  
+
   const useStyle = makeStyles({
     sectionTitle: {
       fontWeight: "600 !important",
@@ -23,14 +23,13 @@ export default function Foods() {
     },
   });
   const { sectionTitle } = useStyle();
- 
+
   useEffect(() => {
-    fetch('http://localhost:5000/foods')
-    .then(res => res.json())
-    .then(data => setFoods(data.filter(food => food.category === "top")))
-    .catch(err => console.log(err));
+    fetch("http://localhost:5000/foods")
+      .then((res) => res.json())
+      .then((data) => setFoods(data.filter((food) => food.category === "top")))
+      .catch((err) => console.log(err));
   }, []);
-   console.log(foods);
   return (
     <>
       <Container sx={{ py: "30px" }}>
@@ -38,10 +37,12 @@ export default function Foods() {
           Top Foods
         </Typography>
       </Container>
-      <Container sx={{pb:'50px'}}>
-          <Grid container spacing={2}>
-            {foods.map((food) => <Food key={food._id} food={food}/>)}
-          </Grid>
+      <Container sx={{ pb: "50px" }}>
+        <Grid container spacing={2}>
+          {foods.map((food) => (
+            <Food key={food._id} food={food} />
+          ))}
+        </Grid>
       </Container>
     </>
   );

@@ -83,9 +83,10 @@ export default function AddToCartModal({
     quantitySliderStyle,
   } = useStyle();
 
-  const { user, setCustomSuccess } = useAuth();
+  const {price } = food;
+  const { user,  } = useAuth();
   const [num, setNum] = React.useState(1);
-  const [price, setPrice] = React.useState(food.price);
+  const [priceSet, setPrice] = React.useState(price);
   const [today, setToday] = React.useState(new Date());
   const history = useHistory()
 
@@ -99,11 +100,10 @@ export default function AddToCartModal({
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
     data.title = food.title;
-    data.price = price;
+    data.price = priceSet ?  food.price : price;
     data.quantity = num;
     data.role = "cart";
     data.date = today.toLocaleDateString();
-    console.log(data);
     fetch("http://localhost:5000/cart", {
       method: "POST",
       headers: {
@@ -123,7 +123,6 @@ export default function AddToCartModal({
     // reset Form___
     reset();
   };
-  console.log(food.price)
   return (
     <>
       <Modal
@@ -171,7 +170,7 @@ export default function AddToCartModal({
                 valueLabelDisplay="auto"
                 step={1}
                 marks
-                onChange={onChangeQuantity}
+                onBlur={onChangeQuantity}
                 min={1}
                 max={10}
               />

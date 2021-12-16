@@ -45,7 +45,7 @@ export default function Food({ food }) {
   });
   const { foodCard, foodCardImg, foodCardContent, buyNowButton } = useStyle();
 
-  const { title, description, image, image2, price, category, rating, _id } = food;
+  const { title, description, image, price,_id } = food;
 
   return (
     <Grid item xs={12} sm={6} md={4}>

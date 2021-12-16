@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import React, { useState } from "react";
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 export default function Login({ setUserSetForm }) {
@@ -43,7 +43,6 @@ export default function Login({ setUserSetForm }) {
     newUserData[field] = value;
     setUserData(newUserData);
   };
-  console.log(userData);
   const { loginForm, inputField, loginButton } = useStyle();
 
   const submitLoginForm = (e) => {

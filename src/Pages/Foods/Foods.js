@@ -31,7 +31,6 @@ export default function Foods() {
     .then(data => setFoods(data))
     .catch(err => console.log(err));
   }, []);
-   console.log(foods);
   return (
     <>
     <Header/>
