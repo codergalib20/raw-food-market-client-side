@@ -54,6 +54,7 @@ export default function Header() {
     },
     logoutButtons: {
       background: "#FE6B8B !important",
+      margin: '0 auto !important',
       "&:hover": {
         background: "#561c22 !important",
       },
@@ -76,7 +77,7 @@ export default function Header() {
             className={classes.sidebarMenus}
             sx={{
               fontSize: "25px",
-              fontWeight: "800",
+              fontWeight: "600",
               color: "#FFF",
               margin: "20px 0",
             }}
@@ -115,6 +116,13 @@ export default function Header() {
             Foods
           </ListItem>
         </NavLink>
+        <Box>
+          {user.email && (
+            <NavLink className={classes.navItem} to="/dashboard">
+              <Button sx={{ color: "white", fontWeight: '600' }}>Dashboard</Button>
+            </NavLink>
+          )}
+        </Box>
         {user?.email ? (
           <Button
             variant="contained"

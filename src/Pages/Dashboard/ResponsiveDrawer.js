@@ -35,20 +35,20 @@ export default function ResponsiveDrawer(props) {
       background: "linear-gradient(-90deg, #FE6B8B 30%, #FF8E53 90%)",
       minHeight: "100vh",
     },
-    dashboardMenuButton:{
+    dashboardMenuButton: {
       color: "white",
       fontWeight: "bold",
       transition: "all 1s !important",
       "&:hover": {
-        background: "linear-gradient(40deg, #fe6b8be3, #ff8f53ec)"
+        background: "linear-gradient(40deg, #fe6b8be3, #ff8f53ec)",
       },
       "&:active": {
-        background: "linear-gradient(40deg, #ff8f53ec, #fe6b8be3))"
-      }
-    }
+        background: "linear-gradient(40deg, #ff8f53ec, #fe6b8be3))",
+      },
+    },
   });
-  const { responsiveShadow, drawerPaper,dashboardMenuButton } = useStyle();
-  const { user } = useAuth();
+  const { responsiveShadow, drawerPaper, dashboardMenuButton } = useStyle();
+  const { user, admin } = useAuth();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -71,36 +71,43 @@ export default function ResponsiveDrawer(props) {
             <ListItemText align="center">Dashboard</ListItemText>
           </ListItem>
         </Link>
-        <Link to={`${url}/myOrders`}>
-          <ListItem button className={dashboardMenuButton}>
-            <ListItemText align="center">My Orders</ListItemText>
-          </ListItem>
-        </Link>
-        <Link to={`${url}/addToCart`}>
-          <ListItem button className={dashboardMenuButton}>
-            <ListItemText align="center">Add To Cart</ListItemText>
-          </ListItem>
-        </Link>
-        <Link to={`${url}/allOrders`}>
-          <ListItem button className={dashboardMenuButton}>
-            <ListItemText align="center">All Orders</ListItemText>
-          </ListItem>
-        </Link>
-        <Link to={`${url}/makeAdmin`}>
-          <ListItem button className={dashboardMenuButton}>
-            <ListItemText align="center">Make Admin</ListItemText>
-          </ListItem>
-        </Link>
-        <Link to={`${url}/manageProducts`}>
-          <ListItem button className={dashboardMenuButton}>
-            <ListItemText align="center">Manage Products</ListItemText>
-          </ListItem>
-        </Link>
-        <Link to={`${url}/allUsers`}>
-          <ListItem button className={dashboardMenuButton}>
-            <ListItemText align="center">All Users</ListItemText>
-          </ListItem>
-        </Link>
+        {admin ? (
+          <Box>
+            <Link to={`${url}/allOrders`}>
+              <ListItem button className={dashboardMenuButton}>
+                <ListItemText align="center">All Orders</ListItemText>
+              </ListItem>
+            </Link>
+            <Link to={`${url}/makeAdmin`}>
+              <ListItem button className={dashboardMenuButton}>
+                <ListItemText align="center">Make Admin</ListItemText>
+              </ListItem>
+            </Link>
+            <Link to={`${url}/manageProducts`}>
+              <ListItem button className={dashboardMenuButton}>
+                <ListItemText align="center">Manage Products</ListItemText>
+              </ListItem>
+            </Link>
+            <Link to={`${url}/allUsers`}>
+              <ListItem button className={dashboardMenuButton}>
+                <ListItemText align="center">All Users</ListItemText>
+              </ListItem>
+            </Link>
+          </Box>
+        ) : (
+          <Box>
+            <Link to={`${url}/myOrders`}>
+              <ListItem button className={dashboardMenuButton}>
+                <ListItemText align="center">My Orders</ListItemText>
+              </ListItem>
+            </Link>
+            <Link to={`${url}/addToCart`}>
+              <ListItem button className={dashboardMenuButton}>
+                <ListItemText align="center">Add To Cart</ListItemText>
+              </ListItem>
+            </Link>
+          </Box>
+        )}
       </List>
     </div>
   );

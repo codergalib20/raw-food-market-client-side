@@ -15,6 +15,7 @@ export default function useFirebase() {
   const [isLoading, setIsLoading] = useState(true)
   const [customSuccess, setCustomSuccess] = useState('');
   const [customError, setCustomError] = useState('')
+  const [admin,setAdmin] = useState(false);
 
   setTimeout(()=>{
       setCustomSuccess('')
@@ -72,6 +73,13 @@ export default function useFirebase() {
     return () => subscribe;
   },[auth])
 
+  useEffect(()=>{
+    fetch(`http://localhost:5000/users/${user.email}`)
+    .then(res => res.json())
+    .then(data => setAdmin(data.admin))
+    .catch(err=>console.log(err))
+  },[user])
+
   // ____Create User Save Database+++++++++
   const data = new Date();
   const saveUser = (email, displayName) =>{
@@ -105,6 +113,7 @@ export default function useFirebase() {
     customSuccess,
     customError,
     logOutUser,
-    setCustomError
+    setCustomError,
+    admin
   };
 }
