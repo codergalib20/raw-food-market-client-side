@@ -11,9 +11,7 @@ export default function UsersAdmin() {
       .then(res => res.json())
       .then(data => setUsers(data.filter(user => user.role !== 'admin')))
   },[])
-  console.log(users)
   
-
   let role = "admin"
   React.useEffect(()=>{
     fetch(`http://localhost:5000/admins?role=${role}`)  // ____Get Admin List

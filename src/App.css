@@ -55,3 +55,28 @@
     opacity: 1;
   }
 }
+
+/*=======Swiper js use so need custom css=======*/
+
+.swiper-container {
+  width: 100%;
+}
+.swiper-wrapper {
+  display: flex;
+  padding: 100px 100px;
+  /* padding-right: 400px !important; */
+  overflow-x: visible;
+}
+.swiper-slide {
+  width: 100%;
+  min-width: 400px;
+  padding: 1rem;
+  position: relative;
+  padding-top: 60px;
+}
+@media only screen and (max-width: 600px) {
+  .swiper-slide {
+    width: 100%;
+    min-width: 300px;
+  }
+}

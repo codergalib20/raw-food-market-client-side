@@ -60,6 +60,39 @@ export default function CartItem({ item, filterEmail, setFilterEmail }) {
       }
     });
   };
+  const acceptOrderHandle = (id) => {
+    swal({
+      title: "Are you sure for confirming?",
+      text: "Once confirm, you will not be able to reject this order without delete it",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then((willDelete) => {
+      if (willDelete) {
+        fetch(`http://localhost:5000/cart/${id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            status: "completed",
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            const remaining = filterEmail.filter(
+              (service) => service._id !== id
+            );
+            setFilterEmail(remaining);
+          });
+        swal("Poof! Your order has been completed!", {
+          icon: "success",
+        });
+      } else {
+        swal("Your cart product doesn't complete! order is not confirm");
+      }
+    });
+  }
   const { itemsArea, itemArea, button } = useStyle();
   return (
     <Accordion>
@@ -93,7 +126,7 @@ export default function CartItem({ item, filterEmail, setFilterEmail }) {
         </Typography>
         <Divider/>
         <Box>
-          <Button className={button}>Confirm</Button>
+          <Button  onClick={()=>acceptOrderHandle(item._id)} className={button}>Confirm</Button>
           <Button
             onClick={() => deleteCartProduct(item._id)}
             sx={{ marginLeft: "1rem" }}

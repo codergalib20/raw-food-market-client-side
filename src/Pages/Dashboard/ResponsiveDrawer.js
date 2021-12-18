@@ -20,7 +20,8 @@ import ManageProduct from "./Admin/ManageProduct";
 import UsersAdmin from "./Admin/UsersAdmin";
 import Dashboard from "./Dashboard";
 import AddToCart from "./User/AddToCart";
-import MyOrder from "./User/MyOrder";
+import MyOrders from "./User/MyOrders";
+import UserReview from "./User/UserReview";
 
 const drawerWidth = 240;
 export default function ResponsiveDrawer(props) {
@@ -104,6 +105,11 @@ export default function ResponsiveDrawer(props) {
             <Link to={`${url}/addToCart`}>
               <ListItem button className={dashboardMenuButton}>
                 <ListItemText align="center">Add To Cart</ListItemText>
+              </ListItem>
+            </Link>
+            <Link to={`${url}/usersReview`}>
+              <ListItem button className={dashboardMenuButton}>
+                <ListItemText align="center">User Review</ListItemText>
               </ListItem>
             </Link>
           </Box>
@@ -217,7 +223,7 @@ export default function ResponsiveDrawer(props) {
             </Route>
             <Route path={`${path}/myOrders`}>
               <div className="animationPageOpen">
-                <MyOrder />
+                <MyOrders />
               </div>
             </Route>
             <Route path={`${path}/AddToCart`}>
@@ -243,6 +249,11 @@ export default function ResponsiveDrawer(props) {
             <Route path={`${path}/allUsers`}>
               <div className="animationPageOpen">
                 <UsersAdmin />
+              </div>
+            </Route>
+            <Route path={`${path}/usersReview`}>
+              <div className="animationPageOpen">
+                <UserReview />
               </div>
             </Route>
           </Switch>

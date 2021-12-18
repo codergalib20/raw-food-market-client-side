@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../../Shared/Header'
+import Review from '../Review/Review'
 import Banner from './Banner'
 import Features from './Features'
 import Foods from './Foods'
@@ -13,6 +14,7 @@ export default function Home() {
        <RawLogo/>
        <Features/>
        <Foods/>
+       <Review/>
     </div>
   )
 }
