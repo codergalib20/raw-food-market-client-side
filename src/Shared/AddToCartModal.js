@@ -104,7 +104,7 @@ export default function AddToCartModal({
     data.quantity = num;
     data.role = "cart";
     data.date = today.toLocaleDateString();
-    fetch("http://localhost:5000/cart", {
+    fetch("https://fierce-meadow-56103.herokuapp.com/cart", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

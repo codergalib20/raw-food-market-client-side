@@ -87,7 +87,7 @@ export default function MakeAdmin() {
   const submitNewAdmin = (e) => {
     e.preventDefault();
     const user = { email };
-    fetch("http://localhost:5000/users/admin/", {
+    fetch("https://fierce-meadow-56103.herokuapp.com/users/admin/", {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -32,7 +32,7 @@ export default function AllAdmin({ admin, admins, setAdmins }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/users/${id}`, {
+        fetch(`https://fierce-meadow-56103.herokuapp.com/users/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

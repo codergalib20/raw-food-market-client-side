@@ -7,7 +7,7 @@ export default function AllOrders() {
 
   const role = "completed";
   React.useEffect(() => {
-    fetch(`http://localhost:5000/cart/orders?role=${role}`)
+    fetch(`https://fierce-meadow-56103.herokuapp.com/cart/orders?role=${role}`)
       .then((res) => res.json())
       .then((data) => setFilterEmail(data));
   }, [role]);

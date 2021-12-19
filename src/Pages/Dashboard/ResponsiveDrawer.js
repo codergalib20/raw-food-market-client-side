@@ -14,6 +14,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { Link, Route, Switch, useRouteMatch } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import AddProducts from "./Admin/AddProducts";
 import AllOrders from "./Admin/AllOrders";
 import MakeAdmin from "./Admin/MakeAdmin";
 import ManageProduct from "./Admin/ManageProduct";
@@ -92,6 +93,11 @@ export default function ResponsiveDrawer(props) {
             <Link to={`${url}/allUsers`}>
               <ListItem button className={dashboardMenuButton}>
                 <ListItemText align="center">All Users</ListItemText>
+              </ListItem>
+            </Link>
+            <Link to={`${url}/addProducts`}>
+              <ListItem button className={dashboardMenuButton}>
+                <ListItemText align="center">Add Products</ListItemText>
               </ListItem>
             </Link>
           </Box>
@@ -224,6 +230,11 @@ export default function ResponsiveDrawer(props) {
             <Route path={`${path}/myOrders`}>
               <div className="animationPageOpen">
                 <MyOrders />
+              </div>
+            </Route>
+            <Route path={`${path}/addProducts`}>
+              <div className="animationPageOpen">
+                <AddProducts />
               </div>
             </Route>
             <Route path={`${path}/AddToCart`}>

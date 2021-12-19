@@ -38,7 +38,7 @@ export default function Review() {
   const [reviews, setReviews] = useState([]);
   useEffect(() => {
     const fetchReviews = async () => {
-      const response = await fetch("http://localhost:5000/review");
+      const response = await fetch("https://fierce-meadow-56103.herokuapp.com/review");
       const data = await response.json();
       console.log(data);
       setReviews(data);

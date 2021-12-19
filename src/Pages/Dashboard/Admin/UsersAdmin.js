@@ -7,14 +7,14 @@ export default function UsersAdmin() {
   const [admins, setAdmins] = React.useState([])
   const [users, setUsers] = React.useState([])
   React.useEffect(()=>{
-    fetch('http://localhost:5000/users')
+    fetch('https://fierce-meadow-56103.herokuapp.com/users')
       .then(res => res.json())
       .then(data => setUsers(data.filter(user => user.role !== 'admin')))
   },[])
   
   let role = "admin"
   React.useEffect(()=>{
-    fetch(`http://localhost:5000/admins?role=${role}`)  // ____Get Admin List
+    fetch(`https://fierce-meadow-56103.herokuapp.com/admins?role=${role}`)  // ____Get Admin List
       .then(res => res.json())
       .then(data => setAdmins(data))
   },[role])

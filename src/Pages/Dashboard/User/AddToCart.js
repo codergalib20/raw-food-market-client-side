@@ -7,7 +7,7 @@ export default function AddToCart() {
 
   const role = "cart";
   React.useEffect(() => {
-    fetch(`http://localhost:5000/cart?email=${user.email}&role=${role}`)
+    fetch(`https://fierce-meadow-56103.herokuapp.com/cart?email=${user.email}&role=${role}`)
       .then((res) => res.json())
       .then((data) => setFilterEmail(data));
   }, [user.email]);

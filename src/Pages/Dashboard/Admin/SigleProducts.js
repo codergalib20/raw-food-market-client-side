@@ -54,7 +54,7 @@ export default function SigleProducts({ food, foods, setFoods }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/foods/${id}`, {
+        fetch(`https://fierce-meadow-56103.herokuapp.com/foods/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -26,7 +26,7 @@ export default function Foods() {
   const { sectionTitle } = useStyle();
  
   useEffect(() => {
-    fetch('http://localhost:5000/foods')
+    fetch('https://fierce-meadow-56103.herokuapp.com/foods')
     .then(res => res.json())
     .then(data => setFoods(data))
     .catch(err => console.log(err));

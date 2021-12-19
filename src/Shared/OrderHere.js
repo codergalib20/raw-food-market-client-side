@@ -57,7 +57,7 @@ export default function OrderHere() {
   const { id } = useParams();
 
   useEffect(() => {
-    const url = `http://localhost:5000/foods/${id}`;
+    const url = `https://fierce-meadow-56103.herokuapp.com/foods/${id}`;
     fetch(url)
       .then((res) => res.json())
       .then((data) => setFood(data))

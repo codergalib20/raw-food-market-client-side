@@ -74,7 +74,7 @@ export default function useFirebase() {
   },[auth])
 
   useEffect(()=>{
-    fetch(`http://localhost:5000/users/${user.email}`)
+    fetch(`https://fierce-meadow-56103.herokuapp.com/users/${user.email}`)
     .then(res => res.json())
     .then(data => setAdmin(data.admin))
     .catch(err=>console.log(err))
@@ -84,7 +84,7 @@ export default function useFirebase() {
   const data = new Date();
   const saveUser = (email, displayName) =>{
     const newUser = {email, displayName, createdAt: data.toString()}
-    fetch('http://localhost:5000/users',{
+    fetch('https://fierce-meadow-56103.herokuapp.com/users',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

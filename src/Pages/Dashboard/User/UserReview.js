@@ -71,7 +71,7 @@ export default function UserReview() {
     formData.append("name", data.name);
     formData.append("email", data.email);
     formData.append("message", data.message);
-    fetch("http://localhost:5000/review", {
+    fetch("https://fierce-meadow-56103.herokuapp.com/review", {
       method: "POST",
       body: formData,
     })

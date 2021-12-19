@@ -42,7 +42,7 @@ export default function MyOrder({ item, filterEmail, setFilterEmail }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/cart/${id}`, {
+        fetch(`https://fierce-meadow-56103.herokuapp.com/cart/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

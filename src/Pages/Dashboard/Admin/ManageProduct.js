@@ -25,7 +25,7 @@ export default function ManageProduct() {
   const { sectionTitle } = useStyle();
 
   useEffect(() => {
-    fetch("http://localhost:5000/foods")
+    fetch("https://fierce-meadow-56103.herokuapp.com/foods")
       .then((res) => res.json())
       .then((data) => setFoods(data.filter((food) => food.category === "top")))
       .catch((err) => console.log(err));

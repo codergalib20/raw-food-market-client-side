@@ -42,7 +42,7 @@ export default function CartItem({ item, filterEmail, setFilterEmail }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/cart/${id}`, {
+        fetch(`https://fierce-meadow-56103.herokuapp.com/cart/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -69,7 +69,7 @@ export default function CartItem({ item, filterEmail, setFilterEmail }) {
       dangerMode: true,
     }).then((willDelete) => {
       if (willDelete) {
-        fetch(`http://localhost:5000/cart/${id}`, {
+        fetch(`https://fierce-meadow-56103.herokuapp.com/cart/${id}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
